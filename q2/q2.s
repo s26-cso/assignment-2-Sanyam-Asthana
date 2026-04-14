@@ -39,7 +39,7 @@ parse_loop: # we need to put all of the elements from argv inside of arr one by 
     addi t2, s4, -1 # decrement index by 1
     slli t2, t2, 2 # t2 = index * 4, for 4 bytes per int
     add t1, t1, t2 # t1 holds address of the current position in arr
-    sw a0, 0(t1) # putting the current string into the current position in the arr
+    sw a0, 0(t1) # putting the current converted string into the current position in the arr
 
     addi s4, s4, 1 # incrementing counter
     j parse_loop
@@ -73,7 +73,7 @@ while_loop:
     addi t1, s5, -1 # set index to size of stack - 1
     slli t1, t1, 2 # t1 = index * 4
     add t0, t0, t1 # t0 golds the address of the top element of the stack
-    lw t1, 0(t0) # t1 holds the index of the top element of stack
+    lw t1, 0(t0) # t1 holds the index stored in the top element of stack
 
     la t2, arr # load base address of arr
     slli t4, t1, 2 # t4 = top index of stack * 4
